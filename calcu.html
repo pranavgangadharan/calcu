@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <style>
+            .calcu{
+
+                margin: auto;
+                padding: 250px;
+            }
+            button{
+                height: 50px;
+                width: 50px;
+            }
+            button:hover{
+                background-color: chartreuse;
+            }
+            #disp{
+                background-color: black; 
+                height: 50px;
+                width: auto;
+                color: blanchedalmond;
+            }
+
+        </style>
+
+    <script>
+        function clkd(val){
+            var x = val.innerText;
+            // alert(x);
+            if(x=="C")
+            {
+                document.getElementById("disp").innerHTML = ""
+                document.getElementById("prevno").value = null
+                document.getElementById("prevop").value = null
+            }
+            else if(x=="back")
+            {
+                document.getElementById("disp").innerHTML = document.getElementById("disp").innerHTML.slice(0,-1)
+            }
+            else if(x == "+" || x == "-" || x == "/" || x == "X")
+                {
+                    document.getElementById("prevop").value = x;
+                    var a = document.getElementById("disp").innerHTML;
+                    if(a != "+" && a != "-" && a != "/" && a != "X")
+                    {
+                        document.getElementById("prevno").value = a;
+                    }
+                    document.getElementById("disp").innerHTML=val.innerHTML;
+                }
+            else if(x == "=")
+            {
+                var cur_no = document.getElementById("disp").innerHTML;             
+                var prev_no = document.getElementById("prevno").value;
+                if(cur_no == "+" || cur_no == "-")
+                {
+                    cur_no = 0;
+                }
+                else if(cur_no == "/" || cur_no == "X")
+                {
+                    cur_no = 1;
+                }
+                var op = document.getElementById("prevop").value;
+                document.getElementById("disp").innerHTML = ""
+                // if(cur_no == "+" || cur_no == "-" || cur_no == "/" || cur_no == "X")
+                // {
+                //     document.getElementById("disp").innerHTML = "Invalid Operation"
+                // }
+                // else if(prev_no == "+" || prev_no == "-" || prev_no == "/" || prev_no == "X")
+                // {
+                //     document.getElementById("disp").innerHTML = "Invalid Operation"
+                // }
+                // else
+                // {
+                    if(op=="+")
+                    {
+                        document.getElementById("disp").innerHTML = Number(prev_no) + Number(cur_no);  
+                    }
+                    else if(op=="-")
+                    {
+                        document.getElementById("disp").innerHTML = Number(prev_no) - Number(cur_no);  
+                    }
+                    else if(op=="/")
+                    {
+                        document.getElementById("disp").innerHTML = Number(prev_no) / Number(cur_no);  
+                    }
+                    else if(op=="X")
+                    {
+                        document.getElementById("disp").innerHTML = Number(prev_no) * Number(cur_no);  
+                    }
+                    else
+                    {
+                        document.getElementById("disp").innerHTML = "Invalid Operation";
+                    }
+                    document.getElementById("prevno").value = null
+                    document.getElementById("prevop").value = null
+                // }
+            }
+            else
+            {
+                var cur = document.getElementById("disp").innerHTML;
+                if(cur == "+" || cur == "-" || cur == "/" || cur == "X")
+                {
+                    // document.getElementById("prevop").value = cur;
+                    document.getElementById("disp").innerHTML="";
+                }
+                document.getElementById("disp").innerHTML = document.getElementById("disp").innerHTML+x;
+            }
+        }
+    </script>
+
+    </head>
+    <body>
+        <div>
+            <input type="hidden" id="prevno">
+            <input type="hidden" id="prevop">
+            <table class="calcu">
+                <tr>
+                    <td colspan="4" ><textarea readonly id="disp"></textarea></td>
+                </tr>
+                <tr>
+                    <td><button onclick="clkd(this)">7</button></td>
+                    <td><button onclick="clkd(this)">8</button></td>
+                    <td><button onclick="clkd(this)">9</button></td>
+                    <td><button onclick="clkd(this)">C</button></td>
+                </tr>
+                <tr>
+                        <td><button onclick="clkd(this)">4</button></td>
+                        <td><button onclick="clkd(this)">5</button></td>
+                        <td><button onclick="clkd(this)">6</button></td>
+                        <td><button onclick="clkd(this)">/</button></td>
+                 </tr>
+                 <tr>
+                        <td><button onclick="clkd(this)">1</button></td>
+                        <td><button onclick="clkd(this)">2</button></td>
+                        <td><button onclick="clkd(this)">3</button></td>
+                        <td><button onclick="clkd(this)">X</button></td>
+                </tr>
+                <tr>
+                        <td><button onclick="clkd(this)">back</button></td>
+                        <td><button onclick="clkd(this)">0</button></td>
+                        <td><button onclick="clkd(this)">+</button></td>
+                        <td><button onclick="clkd(this)">-</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="clkd(this)">=</button></td>
+                </tr>
+                
+                
+            </table>
+        </div>
+    </body>
+</html>
