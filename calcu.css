@@ -1,0 +1,26 @@
+textarea {
+    resize: none;
+    }
+    .calcu{
+
+        margin: auto;
+        padding: 250px;
+    }
+    button{
+        height: 50px;
+        width: 50px;
+    }
+    button:hover{
+        background-color: chartreuse;
+    }
+    #disp{
+        background-color: black; 
+        height: 50px;
+        width: 200px;
+        color: blanchedalmond;
+        font-family: 'Orbitron', sans-serif;
+        font-size: x-large;
+    }
+    #maindv{
+        margin: 220px;
+    }
